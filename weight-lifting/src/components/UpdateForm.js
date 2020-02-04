@@ -7,5 +7,4 @@ const UpdateForm = () => {
         </div>
       );
     };
-    
 export default UpdateForm;
