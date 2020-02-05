@@ -1,13 +1,19 @@
 import React, {useState} from "react";
-import {withFormik, Form, Field, yupToFormErrors} from 'formik';
+import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 
 const RegisterForm = ({values, errors, touched, status}) => {
-  const handleSubmit = event => {
+  const [userState, setUserState] = useState({ 
+    username:'',
+    password:''
+  });
+ const handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    }
+const handleChanges = event => {
+    setUserState({...userState, [event.target.name]: event.target.value})
+  
 }
-    
 return (
   <div>
     <div>
@@ -18,18 +24,21 @@ return (
             type="text"
             name="username"
             placeholder="username"
-          />
+            onChange={handleChanges}
+           />
             {touched.username && errors.username && (<p>{errors.username}</p>)}
               <Field
               type="password"
               name="password"
               placeholder="password"
-          />
+              onChange={handleChanges}
+              />
             {touched.password && errors.password && (<p>{errors.password}</p>) }
-    <div>
+      <div>
             <button type="submit">Sign Up</button>
-  </div>
+      </div>
         </Form>
+        
                </div>
 );
 };
