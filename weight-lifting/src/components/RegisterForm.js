@@ -1,6 +1,27 @@
 import React, {useState} from "react";
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
+import styled from 'styled-components';
+
+const Signuptitle = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-right:25%;
+margin-left:25%;
+width:50%;
+`;
+
+const Submitbutton = styled.button`
+display:flex;
+width:30%;
+margin-left:35%;
+margin-right:35%;
+margin-top:5%;
+
+`;
+
+
 
 const RegisterForm = ({values, errors, touched, status}) => {
   const [userState, setUserState] = useState({ 
@@ -15,7 +36,7 @@ const handleChanges = event => {
   
 }
 return (
-  <div>
+  <Signuptitle>
     <div>
        <h2>Sign Up</h2>
           </div>
@@ -24,6 +45,7 @@ return (
             type="text"
             name="username"
             placeholder="username"
+             
             onChange={handleChanges}
            />
             {touched.username && errors.username && (<p>{errors.username}</p>)}
@@ -31,18 +53,17 @@ return (
               type="password"
               name="password"
               placeholder="password"
+             
               onChange={handleChanges}
               />
             {touched.password && errors.password && (<p>{errors.password}</p>) }
       <div>
-            <button type="submit">Sign Up</button>
+            <Submitbutton type="submit">Sign Up</Submitbutton>
       </div>
         </Form>
-        
-               </div>
+</Signuptitle>
 );
 };
-
     const FormikRegisterForm = withFormik({
       validationSchema: Yup.object().shape({
         username: Yup.string().required('Username Required'),
