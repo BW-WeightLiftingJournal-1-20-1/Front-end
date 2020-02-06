@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import Home from "./components/Home";
 
-import React from 'react';
+
 import Login from './components/Login';
 import './App.css';
 
