@@ -28,6 +28,7 @@ function App(props) {
 
   return (
     <div className="App">
+      <Login/>
       <Router>
         <Link className="home" to="/">Home</Link>
         <Link className="login-link" to="/logintotest">LoginToTest</Link>
