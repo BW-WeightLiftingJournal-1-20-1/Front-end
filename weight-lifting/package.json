@@ -16,7 +16,10 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+<<<<<<< HEAD
+=======
     "styled-components": "^5.0.1",
+>>>>>>> de60f9a352abc379ee5598964e5d44eb87b2d40d
     "yup": "^0.28.1"
   },
   "scripts": {
