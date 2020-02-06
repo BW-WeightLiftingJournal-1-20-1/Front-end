@@ -12,7 +12,7 @@ margin-right:32%;
 margin-left:32%;
 margin-top: 10%;
 width:35%;
-background-color: #07575B;
+background-color: #00A35E;
 padding-bottom:5%;
 padding-top: 2%;
 `;
@@ -43,7 +43,7 @@ padding-bottom:10px;
 padding-top:10px;
 width 100%;
 align-items:center;
-background-color: #07575B;
+background-color: #00A35E;
 `;
 
 const Anchorstyle = styled.a`
