@@ -1,7 +1,25 @@
 import React, {Component} from 'react';
+import backgroundImage from '../images/weight.jpg';
+import styled from 'styled-components';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
+const Topnav = styled.nav`
+display:flex;
+justify-content:flex-end;
+justify-content:space-between;
+padding-bottom:10px;
+padding-top:10px;
+width 100%;
+align-items:center;
+background-color: #00A35E
+`
+const Anchorstyle = styled.a`
+display:flex;
+flex-direction:column;
+`
 
 const Login = (props) => {
-  const [credentials, setCredentials] = React.usestate({
+  const [credentials, setCredentials] = React.useState({
     username: "",
     password: ""
   });
@@ -16,13 +34,29 @@ const Login = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(credentials);
- };
+
+ axiosWithAuth()
+ .post(`/api/auth/login`, credentials)
+ .then(response => {
+  props.history.push(`/`)
+  console.log(response.data);
+ })
+ .catch (error => console.log(error));
+};
+
  const Validation = () => {
    return credentials.username.length > 0 && credentials.password.length > 0;
  };
       return (
         <div>
-          <h3>Login</h3>
+          <Topnav >
+            <h1> Weightlifting Journal</h1>
+             <Anchorstyle>Dashboard</Anchorstyle>
+             <Anchorstyle>Register</Anchorstyle>
+             <Anchorstyle>Add Excercise</Anchorstyle>
+             <Anchorstyle>Saved Excercises</Anchorstyle>
+          </Topnav>
+          <h3 style={{ color:'black',}}>Login Screen</h3>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -31,7 +65,7 @@ const Login = (props) => {
               onChange={handleChange}
               value={credentials.username}
               ></input>
-
+              <br></br>
               <input
                 required
                 type="password"
@@ -40,7 +74,7 @@ const Login = (props) => {
                 onChange={handleChange}
                 value={credentials.password}
               ></input>
-
+            <br></br>
           <button disabled = {!Validation()} type = "submit"  >Log in</button>
             </form>
             </div>
