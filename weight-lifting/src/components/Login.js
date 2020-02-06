@@ -33,13 +33,13 @@ const Login = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.history.push(`/register`)
     console.log(credentials);
 
  axiosWithAuth()
  .post(`/api/auth/login`, credentials)
  .then(response => {
-   console.log(response.data);
+  props.history.push(`/`)
+  console.log(response.data);
  })
  .catch (error => console.log(error));
 };
