@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import PrivateRoute from './utils/PrivateRoute';
 import { axiosWithAuth } from "./utils/axiosWithAuth";
-import Home from "./components/Home";
+import Dashboard from "./components/Dashboard";
 
 import RegisterForm from "./components/RegisterForm";
 
@@ -34,11 +34,10 @@ function App(props) {
 
   return (
     <div className="App">
-      <Login/>
       <Router>
         <Link className="home" to="/">Home</Link>
         <Link className="login-link" to="/login">Login</Link>
-        <Link className="register-link" to="/registerform">Register</Link>
+        <Link className="register-link" to="/registerform">RegisterForm</Link>
         <Link className="addexercise" to="/addexercise">Add Exercise</Link>
         <SavedExercise list={savedList} />
         <Route path="/" component={ExerciseList} />
@@ -53,7 +52,7 @@ function App(props) {
           render={props => {
             return <Exercise {...props} addToSavedList={addToSavedList} exercises={exercises} />;
           }} />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Dashboard} />
         <Route path="/login" component={Login} />
         <Route path="/registerform" component={RegisterForm} />
       </Router>
