@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import backgroundImage from '../images/weight.jpg';
 
 const Login = (props) => {
-  const [credentials, setCredentials] = React.usestate({
+  const [credentials, setCredentials] = React.useState({
     username: "",
     password: ""
   });
@@ -17,12 +18,13 @@ const Login = (props) => {
     e.preventDefault();
     console.log(credentials);
  };
+
  const Validation = () => {
    return credentials.username.length > 0 && credentials.password.length > 0;
  };
       return (
-        <div>
-          <h3>Login</h3>
+        <div style={{ backgroundImage:`url(${backgroundImage})`, backgroundSize: 'cover', width: '100%', height: '500px'}}>
+          <h3 style={{ color:'white'}}>Login Screen</h3>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -31,7 +33,7 @@ const Login = (props) => {
               onChange={handleChange}
               value={credentials.username}
               ></input>
-
+              <br></br>
               <input
                 required
                 type="password"
@@ -40,7 +42,7 @@ const Login = (props) => {
                 onChange={handleChange}
                 value={credentials.password}
               ></input>
-
+            <br></br>
           <button disabled = {!Validation()} type = "submit"  >Log in</button>
             </form>
             </div>
