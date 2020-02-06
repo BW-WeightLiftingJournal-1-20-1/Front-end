@@ -17,13 +17,10 @@ padding-bottom:5%;
 padding-top: 2%;
 `;
 
-
-
 const Title = styled.h2`
 color: #C4DFE6;
 padding-bottom:20%;
 `;
-
 
 const Inputone = styled.input`
 margin-bottom:5%;
