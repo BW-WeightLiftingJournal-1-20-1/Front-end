@@ -33,8 +33,8 @@ function App(props) {
     <div className="App">
       <Router>
         <Link className="home" to="/">Home</Link>
-        <Link className="login-link" to="/logintotest">LoginToTest</Link>
-        <Link className="register-link" to="/registertotest">RegisterToTest</Link>
+        <Link className="login-link" to="/login">Login</Link>
+        <Link className="register-link" to="/register">Register</Link>
         <Link className="addexercise" to="/addexercise">Add Exercise</Link>
         <SavedExercise list={savedList} />
         <Route path="/" component={ExerciseList} />
