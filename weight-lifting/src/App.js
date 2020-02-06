@@ -6,9 +6,6 @@ import Home from "./components/Home";
 
 import React from 'react';
 import Login from './components/Login';
-import RegisterForm from './components/RegisterForm';
-
-
 import './App.css';
 
 function App(props) {
@@ -31,6 +28,7 @@ function App(props) {
 
   return (
     <div className="App">
+      <Login/>
       <Router>
         <Link className="home" to="/">Home</Link>
         <Link className="login-link" to="/login">Login</Link>
