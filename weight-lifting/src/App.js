@@ -23,11 +23,11 @@ function App(props) {
     setSavedList([...savedList, exercise]);
   }
 
+  const id = localStorage.getItem("userId")
   const [exercises, setExercises] = useState([]);
   useEffect(() => {
     axiosWithAuth()
-     .get(`/api/users/id/exercises/`)
-      //.get(`/api/exercises/id`)
+      .get(`/api/users/${id}/exercises/`)
       .then(response => {
         console.log(response.data);
         setExercises(response.data);

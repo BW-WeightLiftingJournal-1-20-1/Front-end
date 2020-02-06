@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialItem = {
-  id: "",
   name: "",
   sets: Number(""),
   reps: Number(""),
@@ -14,7 +13,6 @@ const initialItem = {
   body_region: "",
   journal: "",
   date: ""
-  //userId: parseInt(id)
 }
 
 const UpdateExercise = (props) => {
@@ -38,7 +36,7 @@ const UpdateExercise = (props) => {
   const handleSubmit = event => {
     event.preventDefault();
     axiosWithAuth()
-      .put(`/api/exercises/id/${id}`, editExercise)
+      .put(`/api/exercises/${id}`, editExercise)
       .then(response => {
         props.setEditExercise(response.data)
         props.history.push('/');

@@ -13,8 +13,9 @@ export default class ExerciseList extends Component {
   }
 
   componentDidMount() {
+    const id = localStorage.getItem("userId")
         axiosWithAuth()
-            .get('/api/users/id/exercises')
+            .get(`/api/users/${id}/exercises`)
             .then(response => this.setState({ exercises: response.data }))
             .catch(error => console.log(error.response))
     }
