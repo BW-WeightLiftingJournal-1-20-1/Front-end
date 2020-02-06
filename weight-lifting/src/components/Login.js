@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import backgroundImage from '../images/weight.jpg';
 import styled from 'styled-components';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Topnav = styled.nav`
 display:flex;
@@ -33,7 +34,15 @@ const Login = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(credentials);
- };
+
+ axiosWithAuth()
+ .post(`/api/auth/login`, credentials)
+ .then(response => {
+  props.history.push(`/`)
+  console.log(response.data);
+ })
+ .catch (error => console.log(error));
+};
 
  const Validation = () => {
    return credentials.username.length > 0 && credentials.password.length > 0;
