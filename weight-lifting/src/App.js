@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-//import PrivateRoute from './utils/PrivateRoute';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import PrivateRoute from './utils/PrivateRoute';
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import Home from "./components/Home";
 
+import RegisterForm from "./components/RegisterForm";
 
-import Login from './components/Login';
-import './App.css';
+import Login from "./components/Login";
+
+import ExerciseList from "./components/ExerciseList";
+import SavedExercise from "./components/SavedExercise";
+import UpdateExercise from "./components/UpdateExercise";
+import Exercise from "./components/Exercise";
+import AddExercise from "./components/AddExercise";
 
 function App(props) {
   const [savedList, setSavedList] = useState([]);
@@ -32,7 +38,7 @@ function App(props) {
       <Router>
         <Link className="home" to="/">Home</Link>
         <Link className="login-link" to="/login">Login</Link>
-        <Link className="register-link" to="/register">Register</Link>
+        <Link className="register-link" to="/registerform">Register</Link>
         <Link className="addexercise" to="/addexercise">Add Exercise</Link>
         <SavedExercise list={savedList} />
         <Route path="/" component={ExerciseList} />
@@ -48,8 +54,8 @@ function App(props) {
             return <Exercise {...props} addToSavedList={addToSavedList} exercises={exercises} />;
           }} />
         <Route exact path="/" component={Home} />
-        <Route path="/logintotest" component={LoginToTest} />
-        <Route path="/registertotest" component={RegisterToTest} />
+        <Route path="/login" component={Login} />
+        <Route path="/registerform" component={RegisterForm} />
       </Router>
     </div>
 
