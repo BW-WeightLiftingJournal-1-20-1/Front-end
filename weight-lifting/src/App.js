@@ -1,16 +1,12 @@
 
 import React from 'react';
 import Login from './components/Login';
-import RegisterForm from './components/RegisterForm';
-
-
 import './App.css';
-
 function App() {
   return (
   
     <div>
-   <RegisterForm/>
+ 
     </div>
 
   );

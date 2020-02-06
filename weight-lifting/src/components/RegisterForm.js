@@ -1,69 +1,129 @@
 
 import React, {Component} from "react";
 import styled from 'styled-components';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const Signuptitle = styled.div`
+const Signupform = styled.form`
 display:flex;
 flex-direction:column;
 align-items:center;
-margin-right:25%;
-margin-left:25%;
-margin-top: 15%;
-width:50%;
+border-radius:30px;
+margin-right:32%;
+margin-left:32%;
+margin-top: 10%;
+width:35%;
 background-color: #07575B;
 padding-bottom:5%;
+padding-top: 2%;
 `;
 
-// const Submitbutton = styled.button`
-// display:flex;
-// width:40%;
-// margin-left:30%;
-// margin-right:30%;
-// margin-top:5%;
-// `;
+
 
 const Title = styled.h2`
 color: #C4DFE6;
+padding-bottom:20%;
 `;
 
-const Headertitle = styled.h1`
-color: #66A5AD;
-`
+
+const Inputone = styled.input`
+margin-bottom:5%;
+`;
+
+const Inputtwo = styled.input`
+margin-bottom:10%;
+`;
+
+const Signupbutton = styled.button`
+width: 100%
+
+`;
+
+const Topnav = styled.nav`
+display:flex;
+justify-content:flex-end;
+justify-content:space-between;
+padding-bottom:10px;
+padding-top:10px;
+width 100%;
+align-items:center;
+background-color: #07575B;
+`;
+
+const Anchorstyle = styled.a`
+padding-right:5%;
+color: white;
+
+`;
+const Headertext = styled.h1`
+color: white;
+padding-left:5%;
+`;
+const Footerstyle= styled.footer`
+display:flex;
+justify-content:center;
+background-color:black;
+width 100%;
+padding-top:10px;
+padding-bottom:10px;
+margin-top 15%;
+
+`;
+
+const Copyright = styled.p`
+color:white;
+`;
+const Lambdateam = styled.span`
+color:green;
+`;
 
 const RegisterForm = (props) => {
   const [credentials, setCredentials] = React.useState({ 
     username:'',
     password:''
   });
- const handleSubmit = event => {
+ 
+  const handleSubmit = event => {
     event.preventDefault();
-   console.log(credentials);
+    props.history.push('/Login')
+    console.log(credentials);
     
-    }
+    axiosWithAuth()
+    .post(`/api/auth/register`, credentials)
+    .then(response => {
+      console.log(response.data);
+    })
+   .catch (error => console.log(error));
+    
+  }
+    
+    
+    const handleChanges = event => {
+      setCredentials({...credentials, [event.target.name]: event.target.value})
+    
+  }
     
     const Validation = () => {
       return credentials.username.length > 0 && credentials.password.length > 0;
     
     }
 
-const handleChanges = event => {
-    setCredentials({...credentials, [event.target.name]: event.target.value})
-  
-}
 return (
-
   
-  <Signuptitle> 
-      <div>
-<Headertitle>Weight Lifting Journal</Headertitle>
-    </div>
-    <div>
-       <Title>Sign Up</Title>
-          </div>
+<div> 
+  <Topnav >
+     <Headertext>Weightlifting Journal</Headertext>
+        <Anchorstyle>Dashboard</Anchorstyle>
+        <Anchorstyle>Login</Anchorstyle>
+        <Anchorstyle>Add Exercise</Anchorstyle>
+        <Anchorstyle>Saved Exercises</Anchorstyle>
+  </Topnav >
          
-      <form onSubmit={handleSubmit}>
+    <Signupform onSubmit={handleSubmit}>
+        <div>
+        <Title>Sign Up</Title>
+        </div>
       <div>
-          <input
+          <Inputone
             type="text"
             name="username"
             placeholder="username"
@@ -73,7 +133,7 @@ return (
             
             </div>
               <div>
-              <input
+              <Inputtwo
               type="text"
               name="password"
               placeholder="password"
@@ -83,134 +143,15 @@ return (
           
             </div>
       <div>
-            <button disabled={!Validation()}  type="submit">Sign Up</button>
+            <Signupbutton disabled={!Validation()}  type="submit">Sign Up</Signupbutton>
       </div>
-        </form>
-</Signuptitle>
+        </Signupform>
+        <Footerstyle>
+          <Copyright>Copyright 2019 <Lambdateam>Lamba Team</Lambdateam></Copyright>
+        </Footerstyle>
+</div>
 );
 
 };
-   
-
-
 export default RegisterForm;
 
-// const FormikRegisterForm = withFormik({
-//       validationSchema: yup.object().shape({
-//      // username: yup.string().required('Username Required'),
-//     // password: yup.string().min(6, 'Password needs to be at least 6 characters long').required('Password Required')
-//       })
-//     })(RegisterForm)
-  
-    
-
-
-
-
-
-
-
-
-
-// import React, {useState} from "react";
-// import {withFormik, Form, Field} from 'formik';
-// import * as yup from 'yup';
-// import styled from 'styled-components';
-
-// const Signuptitle = styled.div`
-// display:flex;
-// flex-direction:column;
-// align-items:center;
-// margin-right:25%;
-// margin-left:25%;
-// margin-top: 15%;
-// width:50%;
-// background-color: #07575B;
-// padding-bottom:5%;
-// `;
-
-// const Submitbutton = styled.button`
-// display:flex;
-// width:40%;
-// margin-left:30%;
-// margin-right:30%;
-// margin-top:5%;
-// `;
-
-// const Title = styled.h2`
-// color: #C4DFE6;
-// `;
-
-// const Headertitle = styled.h1`
-// color: #66A5AD;
-// `
-
-// const RegisterForm = ({values, errors, touched, status}) => {
-//   const [userState, setUserState] = useState({ 
-//     username:'',
-//     password:''
-//   });
-//  const handleSubmit = event => {
-//     event.preventDefault();
-   
-    
-//     }
-// const handleChanges = event => {
-//     setUserState({...userState, [event.target.name]: event.target.value})
-  
-// }
-// return (
-
-  
-//   <Signuptitle> 
-//       <div>
-// <Headertitle>Weight Lifting Journal</Headertitle>
-//     </div>
-//     <div>
-//        <Title>Sign Up</Title>
-//           </div>
-         
-//       <Form onSubmit={handleSubmit}>
-//       <div>
-//           <Field
-//             type="text"
-//             name="username"
-//             placeholder="username"
-//             value={userState.username}
-//             onChange={handleChanges}
-//            />
-//             {touched.username && errors.username ? <p>{errors.username}</p> :null}
-//             </div>
-//               <div>
-//               <Field
-//               type="password"
-//               name="password"
-//               placeholder="password"
-//               value={userState.password}
-//               onChange={handleChanges}
-//               />
-//             {touched.password && errors.password ? <p>{errors.password}</p> :null}
-//             </div>
-//       <div>
-//             <Submitbutton disable={!Validation()} type="submit">Sign Up</Submitbutton>
-//       </div>
-//         </Form>
-// </Signuptitle>
-// );
-// };
-   
-// const Validation = () => {
-//   return(UserState.username.length > 0 && UserState.password.length > 0)
-
-// }
-
-// export default FormikRegisterForm;
-
-// // const FormikRegisterForm = withFormik({
-// //       validationSchema: yup.object().shape({
-// //      // username: yup.string().required('Username Required'),
-// //     // password: yup.string().min(6, 'Password needs to be at least 6 characters long').required('Password Required')
-// //       })
-// //     })(RegisterForm)
-  
-    
