@@ -1,5 +1,16 @@
 import React, {Component} from 'react';
 import backgroundImage from '../images/weight.jpg';
+import styled from 'styled-components';
+
+const Topnav = styled.nav`
+display:flex;
+flex-direction:column;
+align-items:center;
+`
+const Anchorstyle = style.a`
+display:flex;
+flex-direction:column;
+`
 
 const Login = (props) => {
   const [credentials, setCredentials] = React.useState({
@@ -23,8 +34,15 @@ const Login = (props) => {
    return credentials.username.length > 0 && credentials.password.length > 0;
  };
       return (
-        <div style={{ backgroundImage:`url(${backgroundImage})`, backgroundSize: 'cover', width: '100%', height: '500px'}}>
-          <h3 style={{ color:'white'}}>Login Screen</h3>
+        <div>
+          <Topnav >
+            <h1> Weightlifting Journal</h1>
+             <Anchorstyle>Dashboard</Anchorstyle>
+             <Anchorstyle>Register</Anchorstyle>
+             <Anchorstyle>Add Excercise</Anchorstyle>
+             <Anchorstyle>Saved Excercises</Anchorstyle>
+          </Topnav>
+          <h3 style={{ color:'black',}}>Login Screen</h3>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
