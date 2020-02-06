@@ -4,10 +4,15 @@ import styled from 'styled-components';
 
 const Topnav = styled.nav`
 display:flex;
-flex-direction:column;
+justify-content:flex-end;
+justify-content:space-between;
+padding-bottom:10px;
+padding-top:10px;
+width 100%;
 align-items:center;
+background-color: #00A35E
 `
-const Anchorstyle = style.a`
+const Anchorstyle = styled.a`
 display:flex;
 flex-direction:column;
 `
