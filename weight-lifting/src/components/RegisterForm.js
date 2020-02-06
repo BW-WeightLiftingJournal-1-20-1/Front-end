@@ -62,7 +62,7 @@ background-color:black;
 width 100%;
 padding-top:10px;
 padding-bottom:10px;
-margin-top 15%;
+margin-top 12%;
 
 `;
 
