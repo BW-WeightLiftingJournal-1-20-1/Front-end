@@ -1,55 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import PrivateRoute from './utils/PrivateRoute';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+//import PrivateRoute from './utils/PrivateRoute';
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import Home from "./components/Home";
 
-import RegisterForm from "./components/RegisterForm";
+//import RegisterForm from "./components/RegisterForm";
 import RegisterToTest from "./components/RegisterToTest";
 
-import Login from "./components/Login";
+//import Login from "./components/Login";
 import LoginToTest from "./components/LoginToTest";
 
-import ExerciseCard from "./components/ExerciseCard";
+import Exercise from "./components/Exercise";
+import AddExercise from "./components/AddExercise";
+import SavedExercise from "./components/SavedExercise";
 import UpdateExercise from "./components/UpdateExercise";
-//import WorkoutCard from "./components/WorkoutCard";
-//import UpdateWorkout from "./components/UpdateWorkout";
-
-
+import ExerciseList from "./components/ExerciseList";
 import './App.css';
 
-function App() {
-  const [dataExercise, setDataExercise] = useState([]);
-  const [toGo, setToGo] = useState(false);
+function App(props) {
+  const [savedList, setSavedList] = useState([]);
+  const addToSavedList = exercise => {
+    setSavedList([...savedList, exercise]);
+  }
+
+  const [exercises, setExercises] = useState([]);
   useEffect(() => {
     axiosWithAuth()
-      .get("/api/users/id/exercises")
+     .get(`/api/users/id/exercises/`)
+      //.get(`/api/exercises/id`)
       .then(response => {
-        console.log("response", response);
-        setDataExercise(response.data);
+        console.log(response.data);
+        setExercises(response.data);
       })
       .catch(error => console.log(error));
-  }, [toGo]);
+  }, []);
 
   return (
     <div className="App">
-      <ExerciseCard />
       <Router>
-        <div className="App">
-          <Link className="home" to="/">Home</Link>
-          <Link className="register-link" to="/registerform">RegisterForm</Link>
-          <Link className="registertotest-link" to="/registertotest">RegisterToTest</Link>
-          <Link className="login-link" to="/login">Login</Link>
-          <Link className="login-link" to="/logintotest">LoginToTest</Link>
-          <Link className="update-exercise" to="/updateexercice">UpdateExercise      </Link>
-          <Switch>
-            <PrivateRoute path="/updateexercice" component={UpdateExercise} />
-            <Route exact path="/" component={Home} />
-            <Route path="/logintotest" component={LoginToTest} />
-            <Route path="/registertotest" component={RegisterToTest} />
-            <Route path="/registerform" component={RegisterForm} />
-          </Switch>
-        </div>
+        <Link className="home" to="/">Home</Link>
+        <Link className="login-link" to="/logintotest">LoginToTest</Link>
+        <Link className="register-link" to="/registertotest">RegisterToTest</Link>
+        <Link className="addexercise" to="/addexercise">Add Exercise</Link>
+        <SavedExercise list={savedList} />
+        <Route path="/" component={ExerciseList} />
+        <Route path="/addexercise/" render={props => (
+          <AddExercise {...props} exercises={exercises} />
+        )} />
+        <Route path="/update-exercise/:id" render={props => (
+          <UpdateExercise {...props} exercises={exercises} />
+        )} />
+        <Route
+          path="/exercises/:id"
+          render={props => {
+            return <Exercise {...props} addToSavedList={addToSavedList} exercises={exercises} />;
+          }} />
+        <Route exact path="/" component={Home} />
+        <Route path="/logintotest" component={LoginToTest} />
+        <Route path="/registertotest" component={RegisterToTest} />
       </Router>
     </div>
   );
