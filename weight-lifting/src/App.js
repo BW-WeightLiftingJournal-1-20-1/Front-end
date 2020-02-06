@@ -4,25 +4,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import Home from "./components/Home";
 
-<<<<<<< HEAD
-//import RegisterForm from "./components/RegisterForm";
-import RegisterToTest from "./components/RegisterToTest";
-
-//import Login from "./components/Login";
-import LoginToTest from "./components/LoginToTest";
-
-import Exercise from "./components/Exercise";
-import AddExercise from "./components/AddExercise";
-import SavedExercise from "./components/SavedExercise";
-import UpdateExercise from "./components/UpdateExercise";
-import ExerciseList from "./components/ExerciseList";
-=======
 import React from 'react';
 import Login from './components/Login';
 import RegisterForm from './components/RegisterForm';
 
 
->>>>>>> de60f9a352abc379ee5598964e5d44eb87b2d40d
 import './App.css';
 
 function App(props) {
