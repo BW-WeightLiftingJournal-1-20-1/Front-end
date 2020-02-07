@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, NavLink } from "react-router-dom";
 import PrivateRoute from './utils/PrivateRoute';
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import Dashboard from "./components/Dashboard";
@@ -34,11 +34,13 @@ function App(props) {
 
   return (
     <div className="App">
+       
       <Router>
-        <Link className="home" to="/">Home</Link>
-        <Link className="login-link" to="/login">Login</Link>
-        <Link className="register-link" to="/registerform">RegisterForm</Link>
-        <Link className="addexercise" to="/addexercise">Add Exercise</Link>
+        <NavLink className="navlink" to="/">Dashboard</NavLink>
+        <NavLink className="navlink" to="/login">Login</NavLink>
+        <NavLink className="navlink" to="/registerform">Register Form</NavLink>
+        <NavLink className="navlink" to="/addexercise">Add Exercise</NavLink>
+
         <SavedExercise list={savedList} />
         <Route path="/" component={ExerciseList} />
         <Route path="/addexercise/" render={props => (
@@ -52,9 +54,11 @@ function App(props) {
           render={props => {
             return <Exercise {...props} addToSavedList={addToSavedList} exercises={exercises} />;
           }} />
-        <Route exact path="/" component={Dashboard} />
-        <Route path="/login" component={Login} />
+       
+        <Route path="/" component={Dashboard} />
         <Route path="/registerform" component={RegisterForm} />
+        <Route path="/login" component={Login} />
+        <Route path="/addexercise" component={AddExercise} />
       </Router>
     </div>
 

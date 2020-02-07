@@ -37,7 +37,7 @@ const Headertext = styled.h1`
 color: white;
 padding-left:5%;
 `;
-const Footerstyle= styled.footer`
+const Footerstyle = styled.footer`
 display:flex;
 justify-content:center;
 background-color:black;
@@ -95,7 +95,6 @@ const AddExercise = props => {
                 console.log(response.event.target)
                 //setNewExercise(initialState)
                 setNewExercise({
-
                     name: "",
                     sets: Number(""),
                     reps: Number(""),
@@ -117,18 +116,18 @@ const AddExercise = props => {
 
     return (
         <div>
-             <Topnav >
-     <Headertext>Weightlifting Journal</Headertext>
-        <Anchorstyle>Dashboard</Anchorstyle>
-        <Anchorstyle>Login</Anchorstyle>
-        <Anchorstyle>Add Exercise</Anchorstyle>
-        <Anchorstyle>Saved Exercises</Anchorstyle>
-  </Topnav >
-            
+            <Topnav >
+                <Headertext>Weightlifting Journal</Headertext>
+                <Anchorstyle>Dashboard</Anchorstyle>
+                <Anchorstyle>Login</Anchorstyle>
+                <Anchorstyle>Add Exercise</Anchorstyle>
+                <Anchorstyle>Saved Exercises</Anchorstyle>
+            </Topnav >
+
             <Addexerciseform className="add-exercice" onSubmit={handleSubmit}>
-            <div>
-               <Title>Add Exercise</Title>
-            </div>
+                <div>
+                    <Title>Add Exercise</Title>
+                </div>
 
                 <Addexerciselabs htmlFor="name">Name: </Addexerciselabs>
                 <input
@@ -188,9 +187,9 @@ const AddExercise = props => {
                 <button type="submit" className="button" onClick={handleAdd}>Add Exercise</button>
             </Addexerciseform>
 
-        <Footerstyle>
-          <Copyright>Copyright 2019 <Lambdateam>Lamba Team</Lambdateam></Copyright>
-        </Footerstyle>
+            <Footerstyle>
+                <Copyright>Copyright 2019 <Lambdateam>Lamba Team</Lambdateam></Copyright>
+            </Footerstyle>
         </div>
     )
 }

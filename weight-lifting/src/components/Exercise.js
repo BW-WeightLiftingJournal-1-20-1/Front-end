@@ -40,7 +40,7 @@ export default class Exercise extends React.Component {
     handleDelete = event => {
         event.preventDefault();
         axiosWithAuth
-        .delete(`/api/exercises/id/${this.state.exercise.id}`)
+        .delete(`/api/exercises/${this.state.exercise.id}`)
           .then(res => {
             this.props.history.push('/update-exercise');
           })

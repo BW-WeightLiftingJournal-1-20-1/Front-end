@@ -152,3 +152,11 @@ return (
 };
 export default RegisterForm;
 
+
+{/* <Topnav >
+<Headertext>Weightlifting Journal</Headertext>
+<Link to="/dashboard"><Anchorstyle>Dashboard</Anchorstyle></Link>
+<Link to="/register-form"><Anchorstyle>Register</Anchorstyle></Link>
+<Link to="/login"><Anchorstyle>Login</Anchorstyle></Link>
+<Link to="/add-exercise"><Anchorstyle>Add Exercise</Anchorstyle></Link>
+</Topnav > */}
