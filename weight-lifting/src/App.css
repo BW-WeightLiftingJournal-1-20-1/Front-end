@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+
+.header{
+  font-size: 30px;
+  color: #00A35E;
+  text-align: center;
+  margin: auto;
+}
+
+.navlink {
+  color: #00A35E;
+  background-color: black;
+  border: 1px solid grey;
+  padding-right: 5px;
+  padding-left: 5px;
+  width: 75px;
+  height: 25px;
+}
+
+.cancel-button {
+  color: #00A35E;
+  background-color: black;
+  border: 1px solid grey;
+  margin-right: 5px;
+  margin-top: 5px;
+  width: 75px;
+  height: 25px;
+}
+
+.edit-button {
+  color: #00A35E;
+  background-color: black;
+  border: 1px solid grey;
+  margin-right: 5px;
+  margin-top: 5px;
+  width: 75px;
+  height: 25px;
+}
+
+.delete-button {
+  color: #00A35E;
+  background-color: black;
+  border: 1px solid grey;
+  margin-right: 5px;
+  margin-top: 5px;
+  width: 75px;
+  height: 25px;
+}
+
+.edit-exercise{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+}

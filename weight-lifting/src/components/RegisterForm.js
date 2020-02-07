@@ -62,7 +62,7 @@ background-color:black;
 width 100%;
 padding-top:10px;
 padding-bottom:10px;
-margin-top 15%;
+margin-top 12%;
 
 `;
 
@@ -107,13 +107,13 @@ const RegisterForm = (props) => {
 return (
   
 <div> 
-  <Topnav >
+  {/* <Topnav >
      <Headertext>Weightlifting Journal</Headertext>
         <Anchorstyle>Dashboard</Anchorstyle>
         <Anchorstyle>Login</Anchorstyle>
         <Anchorstyle>Add Exercise</Anchorstyle>
         <Anchorstyle>Saved Exercises</Anchorstyle>
-  </Topnav >
+  </Topnav > */}
          
     <Signupform onSubmit={handleSubmit}>
         <div>
@@ -152,3 +152,11 @@ return (
 };
 export default RegisterForm;
 
+
+{/* <Topnav >
+<Headertext>Weightlifting Journal</Headertext>
+<Link to="/dashboard"><Anchorstyle>Dashboard</Anchorstyle></Link>
+<Link to="/register-form"><Anchorstyle>Register</Anchorstyle></Link>
+<Link to="/login"><Anchorstyle>Login</Anchorstyle></Link>
+<Link to="/add-exercise"><Anchorstyle>Add Exercise</Anchorstyle></Link>
+</Topnav > */}

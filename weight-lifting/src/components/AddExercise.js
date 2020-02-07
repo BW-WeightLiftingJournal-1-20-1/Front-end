@@ -1,7 +1,72 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import styled from 'styled-components';
 
 //import { addExercise } from "../actions";
+
+
+const Addexerciseform = styled.form`
+display:flex;
+flex-direction:column;
+align-items:center;
+border-radius:30px;
+margin-right:32%;
+margin-left:32%;
+margin-top: 4%;
+width:35%;
+background-color: #00A35E;
+padding-bottom:5%;
+padding-top: 2%;
+`;
+const Topnav = styled.nav`
+display:flex;
+justify-content:flex-end;
+justify-content:space-between;
+padding-bottom:10px;
+padding-top:10px;
+width 100%;
+align-items:center;
+background-color: #00A35E;
+`;
+const Anchorstyle = styled.a`
+padding-right:5%;
+color: white;
+
+`;
+const Headertext = styled.h1`
+color: white;
+padding-left:5%;
+`;
+const Footerstyle = styled.footer`
+display:flex;
+justify-content:center;
+background-color:black;
+width 100%;
+padding-top:10px;
+padding-bottom:10px;
+margin-top 4%;
+
+`;
+const Copyright = styled.p`
+color:white;
+`;
+const Lambdateam = styled.span`
+color:green;
+`;
+
+const Title = styled.h2`
+color: #C4DFE6;
+padding-bottom:10%;
+`;
+const Addexerciselabs = styled.label`
+padding-top:4%;
+color:white;
+`;
+
+const Dateinput = styled.input`
+margin-bottom:5%;
+`;
+
 
 const AddExercise = props => {
     const [newExercise, setNewExercise] = useState({
@@ -30,7 +95,6 @@ const AddExercise = props => {
                 console.log(response.event.target)
                 //setNewExercise(initialState)
                 setNewExercise({
-
                     name: "",
                     sets: Number(""),
                     reps: Number(""),
@@ -52,11 +116,20 @@ const AddExercise = props => {
 
     return (
         <div>
-            <h3 className="add-exercice-title">Add Exercise</h3>
-            <form className="add-exercice" onSubmit={handleSubmit}>
+            {/* <Topnav >
+                <Headertext>Weightlifting Journal</Headertext>
+                <Anchorstyle>Dashboard</Anchorstyle>
+                <Anchorstyle>Login</Anchorstyle>
+                <Anchorstyle>Add Exercise</Anchorstyle>
+                <Anchorstyle>Saved Exercises</Anchorstyle>
+            </Topnav > */}
 
+            <Addexerciseform className="add-exercice" onSubmit={handleSubmit}>
+                <div>
+                    <Title>Add Exercise</Title>
+                </div>
 
-                <label htmlFor="name">Name: </label>
+                <Addexerciselabs htmlFor="name">Name: </Addexerciselabs>
                 <input
                     type="text"
                     name="name"
@@ -64,7 +137,7 @@ const AddExercise = props => {
                     onChange={handleChangesAdd}>
                 </input>
 
-                <label htmlFor="sets">Sets: </label>
+                <Addexerciselabs htmlFor="sets">Sets: </Addexerciselabs>
                 <input
                     type="number"
                     name="sets"
@@ -72,7 +145,7 @@ const AddExercise = props => {
                     onChange={handleChangesAdd} >
                 </input>
 
-                <label htmlFor="reps">Reps: </label>
+                <Addexerciselabs htmlFor="reps">Reps: </Addexerciselabs>
                 <input
                     type="number"
                     name="reps"
@@ -80,7 +153,7 @@ const AddExercise = props => {
                     onChange={handleChangesAdd}>
                 </input>
 
-                <label htmlFor="weight">Weight: </label>
+                <Addexerciselabs htmlFor="weight">Weight: </Addexerciselabs>
                 <input
                     type="number"
                     name="weight"
@@ -88,7 +161,7 @@ const AddExercise = props => {
                     onChange={handleChangesAdd}>
                 </input>
 
-                <label htmlFor="body_region">Body Region: </label>
+                <Addexerciselabs htmlFor="body_region">Body Region: </Addexerciselabs>
                 <input
                     type="text"
                     name="body_region"
@@ -96,7 +169,7 @@ const AddExercise = props => {
                     onChange={handleChangesAdd}>
                 </input>
 
-                <label htmlFor="journal">Journal: </label>
+                <Addexerciselabs htmlFor="journal">Journal: </Addexerciselabs>
                 <input
                     type="text"
                     name="journal"
@@ -104,16 +177,21 @@ const AddExercise = props => {
                     onChange={handleChangesAdd}>
                 </input>
 
-                <label htmlFor="date">Date: </label>
-                <input
+                <Addexerciselabs htmlFor="date">Date: </Addexerciselabs>
+                <Dateinput
                     type="text"
                     name="date"
                     value={newExercise.date}
                     onChange={handleChangesAdd}>
-                </input>
+                </Dateinput>
                 <button type="submit" className="button" onClick={handleAdd}>Add Exercise</button>
-            </form>
+            </Addexerciseform>
+
+            <Footerstyle>
+                <Copyright>Copyright 2019 <Lambdateam>Lamba Team</Lambdateam></Copyright>
+            </Footerstyle>
         </div>
     )
 }
 export default AddExercise;
+
