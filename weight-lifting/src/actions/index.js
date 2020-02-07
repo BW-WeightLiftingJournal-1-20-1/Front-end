@@ -95,17 +95,31 @@ export const fetchworkout = id => dispatch => {
             });
 }
 
-export const editWorkout = input => dispatch => {
+export const editWorkout = id => dispatch => {
       dispatch({ type: EDIT_WORKOUT_START });
       axiosWithAuth()
-            .put(`/api/exercises/${input.id}`, input)
+            .put(`/api/users/${id}/exercises`)
             .then(response => {
-                  dispatch({ type: EDIT_WORKOUT_SUCCESS, payload: response.data.updated });
+                                  dispatch({ type: EDIT_WORKOUT_SUCCESS, payload: response.data.updated });
             })
             .catch(error => {
                   dispatch({ type: EDIT_WORKOUT_FAILURE, payload: error.data });
             });
 }
+
+// const handleSubmit = event => {
+//       event.preventDefault();
+//       axiosWithAuth()
+//         .put(`/api/exercises/${id}`, editExercise)
+//         .then(response => {
+//           props.history.push('/dashboard/');
+//           props.setEditExercise(response.data)
+//         })
+//         .catch(error => console.log(error));
+//     }
+
+
+
 
 export const deleteWorkout = input => dispatch => {
       dispatch({ type: DELETE_WORKOUT_START });
