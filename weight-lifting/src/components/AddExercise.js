@@ -116,13 +116,13 @@ const AddExercise = props => {
 
     return (
         <div>
-            <Topnav >
+            {/* <Topnav >
                 <Headertext>Weightlifting Journal</Headertext>
                 <Anchorstyle>Dashboard</Anchorstyle>
                 <Anchorstyle>Login</Anchorstyle>
                 <Anchorstyle>Add Exercise</Anchorstyle>
                 <Anchorstyle>Saved Exercises</Anchorstyle>
-            </Topnav >
+            </Topnav > */}
 
             <Addexerciseform className="add-exercice" onSubmit={handleSubmit}>
                 <div>
@@ -194,3 +194,4 @@ const AddExercise = props => {
     )
 }
 export default AddExercise;
+

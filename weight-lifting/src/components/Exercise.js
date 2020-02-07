@@ -22,14 +22,14 @@ export default class Exercise extends React.Component {
 
   fetchExercise = id => {
     axiosWithAuth()
-      .get(`api/users/id/exercises/${id}`)
+      .get(`api/exercises/${id}`)
       .then(response => this.setState({ exercise: response.data }))
       .catch(error => console.log(error.response));
   };
 
-  saveExercise = () => {
-    const addToSavedList = this.props.addToSavedList;
-    addToSavedList(this.state.exercise);
+  cancelExercise = (event) => {
+    event.preventDefault();
+    this.props.history.push(`/dashboard/${this.state.exercise.id}`);
   };
 
   handleUpdate = event => {
@@ -37,28 +37,28 @@ export default class Exercise extends React.Component {
     this.props.history.push(`/update-exercise/${this.state.exercise.id}`);
   };
 
-    handleDelete = event => {
-        event.preventDefault();
-        axiosWithAuth
-        .delete(`/api/exercises/${this.state.exercise.id}`)
-          .then(res => {
-            this.props.history.push('/update-exercise');
-          })
-          .catch(error => console.log(error))
-      }
+  handleDelete = id => {
+    axiosWithAuth()
+      .delete(`/api/exercises/${this.state.exercise.id}`)
+      .then(res => {
+        this.props.history.push('/dashboard');
+      })
+      .catch(error => console.log(error))
+  }
 
-      render() {
-        if (!this.state.exercise) {
-          return <div>Loading workout entries...</div>;
-        }
 
-        return (
-            <div className="save-wrapper">
-              <ExerciseCard exercise={this.state.exercise} />
-              <span> <button className="save-button" onClick={this.saveExercise}>Save</button></span>
-              <span> <button className="edit-button" onClick={this.handleUpdate}>Edit</button></span>
-              <span><button className="delete-button" onClick={this.handleDelete}>Delete</button></span>
-            </div>
-          );
-        }
-      }
+  render() {
+    if (!this.state.exercise) {
+      return <div></div>;
+    }
+
+    return (
+      <div className="save-wrapper">
+        <ExerciseCard exercise={this.state.exercise} />
+        <span> <button className="cancel-button" onClick={this.cancelExercise}>Cancel</button></span>
+        <span> <button className="edit-button" onClick={this.handleUpdate}>Edit</button></span>
+        <span><button className="delete-button" onClick={this.handleDelete}>Delete</button></span>
+      </div>
+    );
+  }
+}
